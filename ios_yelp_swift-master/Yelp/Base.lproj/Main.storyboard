@@ -26,11 +26,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BusinessCell" selectionStyle="default" indentationWidth="10" rowHeight="107" id="e32-0E-SSJ" customClass="BusinessCellTableViewCell" customModule="Yelp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="107" id="e32-0E-SSJ" customClass="BusinessCellTableViewCell" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e32-0E-SSJ" id="L53-7C-u2F">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="106"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kje-v3-nlX">
@@ -85,12 +85,25 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addressLabel" destination="iwW-8B-gON" id="TnS-oo-TMx"/>
+                                            <outlet property="category" destination="nBF-Rk-TO9" id="WZx-P1-3y7"/>
+                                            <outlet property="distanceLabel" destination="C0h-az-bkf" id="tdQ-SJ-9fS"/>
+                                            <outlet property="foodImage" destination="Kje-v3-nlX" id="qcF-aB-hRD"/>
+                                            <outlet property="moneyLabel" destination="fgd-lC-mGn" id="eSV-ON-QHT"/>
+                                            <outlet property="reviewLabel" destination="st3-Vu-U6m" id="JZX-d5-aa5"/>
+                                            <outlet property="starImage" destination="yiv-2G-VxF" id="ioK-Qu-Exa"/>
+                                            <outlet property="titleLabel" destination="cog-Fg-4fu" id="i0I-3U-gfd"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="SmV-ED-KdV" id="1zV-u7-myf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgb-4b-F1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
