@@ -26,7 +26,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
          //   let centerLocation = CLLocation(latitude: 40.424, longitude: -86.9212)
            // goToLoaction(location: centerLocation)
         //}else{
-            let restruantLocaiton = CLLocation(latitude: latitude, longitude: longtitude!)
+            let restruantLocaiton = CLLocation(latitude: latitude!, longitude: longtitude!)
             goToLoaction(location: restruantLocaiton)
        // }
         

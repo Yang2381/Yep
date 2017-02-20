@@ -120,8 +120,8 @@ class BusinessesViewController: UIViewController, UITableViewDelegate,UITableVie
      
         let mapViewController = segue.destination as! MapViewController
         
-        mapViewController.longtitude = busie.geoLatitde
-        mapViewController.latitude = busie.geoLontitude
+        mapViewController.longtitude = busie.geoLatitde as Double?
+        mapViewController.latitude = busie.geoLontitude as Double?
     }
 
     
