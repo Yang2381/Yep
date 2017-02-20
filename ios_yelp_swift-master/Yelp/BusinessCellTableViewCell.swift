@@ -30,17 +30,21 @@ class BusinessCellTableViewCell: UITableViewCell {
     @IBOutlet weak var reviewLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var starImage: UIImageView!
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         foodImage.layer.cornerRadius = 5
         foodImage.clipsToBounds = true
+       // titleLabel.preferredMaxLayoutWidth = titleLabel.frame.size.width
     }
 
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-
+    
+    
 }
