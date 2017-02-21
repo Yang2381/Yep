@@ -40,7 +40,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I am having problem fetching coordinate data and passing it to mapViewController. Also, the offset is not working. Swift is too hard!!
 
 ## License
 
