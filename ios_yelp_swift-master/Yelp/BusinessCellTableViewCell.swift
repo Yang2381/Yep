@@ -19,6 +19,7 @@ class BusinessCellTableViewCell: UITableViewCell {
             reviewLabel.text = "\(business.reviewCount!) Reviews"
             starImage.setImageWith(business.ratingImageURL!)
             distanceLabel.text = business.distance
+            
         }
     }
     

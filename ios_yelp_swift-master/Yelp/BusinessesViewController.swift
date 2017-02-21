@@ -44,7 +44,7 @@ class BusinessesViewController: UIViewController, UITableViewDelegate,UITableVie
         // Sets this view controller as presenting view controller for the search interface
         definesPresentationContext = true
         
-        Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
+        Business.searchWithTerm(term: "Thai", offset: 20, completion: { (businesses: [Business]?, error: Error?) -> Void in
         
             self.businesses = businesses
             self.tableView.reloadData()
@@ -107,7 +107,8 @@ class BusinessesViewController: UIViewController, UITableViewDelegate,UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessCell", for: indexPath) as! BusinessCellTableViewCell
         cell.business = businesses[indexPath.row]
-        
+    
+    
         return cell
         
         }
@@ -117,11 +118,10 @@ class BusinessesViewController: UIViewController, UITableViewDelegate,UITableVie
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPath(for: cell)
         let busie = businesses[indexPath!.row]
-     
-        let mapViewController = segue.destination as! MapViewController
         
-        mapViewController.longtitude = busie.geoLatitde as Double?
-        mapViewController.latitude = busie.geoLontitude as Double?
+        let mapViewController = segue.destination as! MapViewController
+        mapViewController.resLocation = busie.geoLocation
+        
     }
 
     

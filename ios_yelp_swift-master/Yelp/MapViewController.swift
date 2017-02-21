@@ -10,15 +10,15 @@ import UIKit
 import  MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate{
+class MapViewController: UIViewController, CLLocationManagerDelegate,MKMapViewDelegate{
 
     @IBOutlet weak var myMap: MKMapView!
     
     
     var locationManager: CLLocationManager!
-    var longtitude: Double?
-    var latitude: Double?
-    
+    var longtitude: Double = 0.0
+    var latitude: Double = 0.0
+    var resLocation: CLLocation? 
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,10 +26,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
          //   let centerLocation = CLLocation(latitude: 40.424, longitude: -86.9212)
            // goToLoaction(location: centerLocation)
         //}else{
-            let restruantLocaiton = CLLocation(latitude: latitude!, longitude: longtitude!)
+            let restruantLocaiton = CLLocation(latitude: latitude, longitude: longtitude)
             goToLoaction(location: restruantLocaiton)
        // }
-        
+        self.myMap.delegate = self
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -39,6 +39,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate{
         //let centerLocation = CLLocation(latitude: 37.7833, longitude: -122.4167)
         //goToLoaction(location: centerLocation)
         // Do any additional setup after loading the view.
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
