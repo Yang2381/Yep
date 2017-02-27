@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+
 class Business: NSObject {
     let name: String?
     let address: String?
@@ -20,6 +21,7 @@ class Business: NSObject {
     var geoLontitude: Double?
    
     init(dictionary: NSDictionary) {
+       
         name = dictionary["name"] as? String
         
         let imageURLString = dictionary["image_url"] as? String
@@ -36,32 +38,11 @@ class Business: NSObject {
             if addressArray != nil && addressArray!.count > 0 {
                 address = addressArray![0] as! String
             }
-            geoLatitde = location!.value(forKey: "coordinate.latitude") as? Double
-            geoLontitude = location!.value(forKey: "coordinate.longitude") as? Double
-           
-           /*
-            var geoLatitde: Double?{
-                get {
-                    
-                    if let geoArray = location!["coordinate"] as? NSDictionary{
-                        return(geoArray["latitude"] as! Double)
-                    }
-                    return nil
-                }
-              
-            }
-           
             
-            var geoLontitude: Double?{
-                get {
-                    if let geoArray = location!["coordinate"] as? NSDictionary{
-                    
-                        return(geoArray["longitude"] as! Double)
-                    }
-                return nil
-                }
-            }
-            */
+            let coordinates = location?.value(forKey: "coordinate") as! NSDictionary
+            geoLontitude = coordinates.value(forKey: "longitude") as? Double
+            geoLatitde = coordinates.value(forKey: "latitude") as? Double
+           
             let neighborhoods = location!["neighborhoods"] as? NSArray
             if neighborhoods != nil && neighborhoods!.count > 0 {
                 if !address.isEmpty {
@@ -104,13 +85,6 @@ class Business: NSObject {
        
     }
     
-    var geoLocation: CLLocation{
-        get{
-           return CLLocation(latitude: self.geoLatitde!, longitude: self.geoLontitude!)
-           
-        }
-        
-    }
     class func businesses(array: [NSDictionary]) -> [Business] {
         var businesses = [Business]()
         for dictionary in array {
@@ -120,11 +94,11 @@ class Business: NSObject {
         return businesses
     }
     
-    class func searchWithTerm(term: String, offset:Int?, completion: @escaping ([Business]?, Error?) -> Void) {
-        _ = YelpClient.sharedInstance.searchWithTerm(term, completion: completion)
+    class func searchWithTerm(term: String, offset:Int,limit: Int, completion: @escaping ([Business]?, Error?) -> Void) {
+        _ = YelpClient.sharedInstance.searchWithTerm(term, offset: offset,limit: limit, completion: completion)
     }
     
-    class func searchWithTerm(term: String, offset: Int?, sort: YelpSortMode?, categories: [String]?, deals: Bool?, completion: @escaping ([Business]?, Error?) -> Void) -> Void {
-        _ = YelpClient.sharedInstance.searchWithTerm(term,pgOffset: offset!, sort: sort, categories: categories, deals: deals, completion: completion)
+    class func searchWithTerm(term: String, offset: Int, limit: Int, sort: YelpSortMode?, categories: [String]?, deals: Bool?, completion: @escaping ([Business]?, Error?) -> Void) -> Void {
+        _ = YelpClient.sharedInstance.searchWithTerm(term,offset: offset, limit: limit, sort: sort, categories: categories, deals: deals, completion: completion)
     }
 }

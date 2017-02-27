@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2xI-yr-O5N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gQe-Z2-MHG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Businesses View Controller-->
+        <!--Fake Yelp-->
         <scene sceneID="5L9-Uz-lNK">
             <objects>
                 <viewController id="2xI-yr-O5N" customClass="BusinessesViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,20 +21,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lAQ-nz-Tuh">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Fake Yelp" id="rEc-VQ-Z95">
-                                        <barButtonItem key="leftBarButtonItem" title="Filters" id="lEt-Qg-Eoa">
-                                            <connections>
-                                                <segue destination="aHN-ek-9Va" kind="show" id="Tv8-rf-WTD"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="119" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SmV-ED-KdV">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="119" id="e32-0E-SSJ" customClass="BusinessCellTableViewCell" customModule="Yelp" customModuleProvider="target">
@@ -135,16 +123,19 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="SmV-ED-KdV" firstAttribute="top" secondItem="lAQ-nz-Tuh" secondAttribute="bottom" id="C7M-PO-Ht6"/>
-                            <constraint firstItem="SmV-ED-KdV" firstAttribute="top" secondItem="hR0-74-jRp" secondAttribute="bottom" constant="44" id="FMD-ug-iNS"/>
-                            <constraint firstItem="lAQ-nz-Tuh" firstAttribute="top" secondItem="hR0-74-jRp" secondAttribute="bottom" id="Gvb-IG-4CD"/>
-                            <constraint firstItem="lAQ-nz-Tuh" firstAttribute="leading" secondItem="XhR-oz-92f" secondAttribute="leading" id="cGS-fs-Jj9"/>
+                            <constraint firstItem="SmV-ED-KdV" firstAttribute="top" secondItem="XhR-oz-92f" secondAttribute="top" id="TKB-Nk-oTj"/>
                             <constraint firstItem="SmV-ED-KdV" firstAttribute="leading" secondItem="XhR-oz-92f" secondAttribute="leading" id="eho-v9-VCU"/>
                             <constraint firstItem="VBY-gq-v8E" firstAttribute="top" secondItem="SmV-ED-KdV" secondAttribute="bottom" id="qrt-IK-pGg"/>
                             <constraint firstAttribute="trailing" secondItem="SmV-ED-KdV" secondAttribute="trailing" id="seF-ei-Jg8"/>
-                            <constraint firstAttribute="trailing" secondItem="lAQ-nz-Tuh" secondAttribute="trailing" id="ts4-1U-MTb"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Fake Yelp" id="ZtC-wy-Ivv">
+                        <barButtonItem key="leftBarButtonItem" title="Filters" id="lEt-Qg-Eoa">
+                            <connections>
+                                <segue destination="aHN-ek-9Va" kind="show" id="Tv8-rf-WTD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="WgO-di-4gf" id="kQW-Rm-zfV"/>
                         <outlet property="tableView" destination="SmV-ED-KdV" id="1zV-u7-myf"/>
@@ -160,7 +151,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1788" y="357.57121439280365"/>
+            <point key="canvasLocation" x="2727.1999999999998" y="357.57121439280365"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="le5-n2-J7y">
@@ -187,12 +178,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hHR-4l-sQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2647" y="-41"/>
+            <point key="canvasLocation" x="3584.8000000000002" y="-41.829085457271368"/>
         </scene>
-        <!--View Controller-->
+        <!--Filters View Controller-->
         <scene sceneID="Wa9-Bs-Q0v">
             <objects>
-                <viewController id="2c7-4R-CL1" sceneMemberID="viewController">
+                <viewController id="2c7-4R-CL1" customClass="FiltersViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u3N-s8-vMb"/>
                         <viewControllerLayoutGuide type="bottom" id="MwM-kH-kfb"/>
@@ -246,13 +237,24 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Tvp-jG-sBg">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="hdI-ks-dKe"/>
-                        <barButtonItem key="rightBarButtonItem" title="Search" id="cfZ-zk-UMC"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="hdI-ks-dKe">
+                            <connections>
+                                <action selector="onCancelButton:" destination="2c7-4R-CL1" id="NeS-v2-1pa"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Search" id="cfZ-zk-UMC">
+                            <connections>
+                                <action selector="onSearchButton:" destination="2c7-4R-CL1" id="mZl-GX-sbu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="5b3-Mc-xJ2" id="2cO-4f-Hw7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UsJ-bd-b6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4328.8000000000002" y="387.25637181409297"/>
+            <point key="canvasLocation" x="5268" y="387.25637181409297"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nt6-EI-WdN">
@@ -270,7 +272,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ijW-w1-f8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3389.5999999999999" y="387.25637181409297"/>
+            <point key="canvasLocation" x="4328.8000000000002" y="387.25637181409297"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RiI-I0-oR6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gQe-Z2-MHG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IiF-bV-rTV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2xI-yr-O5N" kind="relationship" relationship="rootViewController" id="y2G-Wx-xi6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4xU-gm-J7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1788" y="357.57121439280365"/>
         </scene>
     </scenes>
 </document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusinessesViewController: UIViewController, UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating{
+class BusinessesViewController: UIViewController, UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating, UIScrollViewDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -44,7 +44,7 @@ class BusinessesViewController: UIViewController, UITableViewDelegate,UITableVie
         // Sets this view controller as presenting view controller for the search interface
         definesPresentationContext = true
         
-        Business.searchWithTerm(term: "Thai", offset: 20, completion: { (businesses: [Business]?, error: Error?) -> Void in
+        Business.searchWithTerm(term: "Asia", offset: 0, limit: 20, completion: { (businesses: [Business]?, error: Error?) -> Void in
         
             self.businesses = businesses
             self.tableView.reloadData()
@@ -72,6 +72,51 @@ class BusinessesViewController: UIViewController, UITableViewDelegate,UITableVie
         
     }
     
+    /*****************************************************************************
+                                Infinite scroll
+     Set the buttom limit 
+     test if it reaches the limit and if user is still dragging
+     then 
+     set flag to true
+     load more data and reload tableView
+    *******************************************************************************/
+    
+    var isMoreDataLoading = false
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+                isMoreDataLoading = true
+                loadMoreData()
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+            /*****************************************************************************
+                                    Goes with infinite scroll
+                Load the data from the end of result as offset and load until the limit.
+                Append the data to businesses
+                Set the flag to false agina to reload next time
+                Reload the tableView
+            *******************************************************************************/
+    func loadMoreData() {
+        
+        Business.searchWithTerm(term: "Thai", offset: self.businesses.count, limit: 20, completion: { (businesses: [Business]?, error: Error?) -> Void in
+            if let businesses = businesses{
+                self.businesses.append(contentsOf: businesses)
+            }
+            self.isMoreDataLoading = false
+            self.tableView.reloadData()
+        }
+      )
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -92,6 +137,7 @@ class BusinessesViewController: UIViewController, UITableViewDelegate,UITableVie
         if let searchString = searchController.searchBar.text{
             if !searchString.isEmpty {
                 print("Don't know what to do now")
+                
             }
         }
       
@@ -114,15 +160,16 @@ class BusinessesViewController: UIViewController, UITableViewDelegate,UITableVie
         }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+      
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPath(for: cell)
         let busie = businesses[indexPath!.row]
         
         let mapViewController = segue.destination as! MapViewController
-        mapViewController.resLocation = busie.geoLocation
+        mapViewController.business = busie
         
     }
-
+    
+    
     
    }
